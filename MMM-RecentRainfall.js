@@ -152,7 +152,9 @@ Module.register("MMM-RecentRainfall", {
                 if (this.status === 200) {
                     self.result = JSON.parse(this.response);
                     self.loaded = true;
-                    self.updateDom(2000);   
+                    self.updateDom(2000);
+                } else {
+                    Log.error(self.name + " : Could not load data.");
                 }
             }
         };
