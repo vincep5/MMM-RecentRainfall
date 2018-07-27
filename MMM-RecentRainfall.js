@@ -54,6 +54,8 @@ Module.register("MMM-RecentRainfall", {
             this.fetchedLocationName = this.result.meta.name;
         }
 
+        rainfall = parseFloat(rainfall).toFixed(2);
+
         var rainElement = document.createElement("span");
         rainElement.innerHTML = this.config.days_to_get + " day rainfall: " + rainfall + "\"";
 
