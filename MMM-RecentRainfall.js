@@ -8,7 +8,7 @@ Module.register("MMM-RecentRainfall", {
     date_end_string: "",
     // Default module config.
     defaults: {
-        updateInterval: 2 * 60 * 60 * 1000, // every 2 hours (see below: only from 5am-10am)
+        updateInterval: 2 * 60 * 60 * 1000, // every 2 hours (see below: only from 6am-11am)
         station_id: 'JFK', // id via http://www.rcc-acis.org/docs_metadata.html
         days_to_get: 7, // number greater than 1
         show_image: false, // show the sum of rainfall as an image
@@ -110,10 +110,10 @@ Module.register("MMM-RecentRainfall", {
     },
 
     getData: function () {
-        // only get data from 6am to before 11am.  Historical data will not change, so no use in calling this throughout the daytime
+        // only get data from about 6am to 11am.  Historical data will not change, so no use in calling this throughout the daytime
         // keep updateInterval at 2 hours
         var hr = new Date(Date.now()).getHours();
-        if (this.loaded && (hr < 6 || hr > 10)) {
+        if (this.loaded && (hr < 6 || hr > 11)) {
             return;
         }       
         
