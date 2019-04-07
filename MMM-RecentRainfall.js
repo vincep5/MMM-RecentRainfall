@@ -15,7 +15,7 @@ Module.register("MMM-RecentRainfall", {
         state_id: 'ny', // if show_image is true, then this is required
         image_width: 200 // if show_image is true, then this is required
     },
-   
+
     start: function() {
         this.loaded = false;
         this.getData();
@@ -26,11 +26,11 @@ Module.register("MMM-RecentRainfall", {
     getHeader: function() {
         return this.data.header + " " + this.fetchedLocationName;
     },
-    
+
     getStyles: function() {
         return ["MMM-RecentRainfall.css"];
     },
-    
+
     // Override dom generator.
     getDom: function() {
         var wrapper = document.createElement("recentrainfall");
@@ -68,7 +68,7 @@ Module.register("MMM-RecentRainfall", {
             var imageElement = document.createElement("img");
             var obj = {
                         "state": this.config.state_id,
-                        "grid":"1",
+                        "grid":"2",
                         "output":"image",
                         "sdate": this.date_start_string,
                         "edate": this.date_end_string,
@@ -115,8 +115,8 @@ Module.register("MMM-RecentRainfall", {
         var hr = new Date(Date.now()).getHours();
         if (this.loaded && (hr < 6 || hr > 11)) {
             return;
-        }       
-        
+        }
+
         var self = this;
         var days = this.config.days_to_get;
         
@@ -124,7 +124,7 @@ Module.register("MMM-RecentRainfall", {
         if (this.config.days_to_get > 365) {
             days = 365;
         }
-        
+
         var date_start = new Date(Date.now());
         var date_end = new Date(Date.now());
         date_start.setDate(date_start.getDate() - days);
@@ -144,7 +144,7 @@ Module.register("MMM-RecentRainfall", {
                     }],
                     "meta": ["name"]
                   };
-                  
+
         data.append("params", JSON.stringify(obj));
         
         var xhr = new XMLHttpRequest();
